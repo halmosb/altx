@@ -119,8 +119,7 @@ The data used in the study is sourced from the UCR Time Series Classification Ar
 
 ## References
 <a id="1">[1]</a>
-Marcell T. Kurbucz, Balázs Hajós, Balázs P. Halmos, Vince Á. Molnár, Antal Jakovác. (2025).
-Adaptive Law-Based Transformation (ALT): A Lightweight Feature Representation for Time Series Classification, [arXiv preprint](https://arxiv.org/abs/2501.09217).
+M. T. Kurbucz, B. Hajós, B. P. Halmos, V. Á. Molnár, A. Jakovác, Adaptive law-based feature representation for time series classification, Scientific Reports 15 (1) (2025) 41775. URL https://doi.org/10.1038/s41598-025-25667-0
 
 <a id="2">[2]</a>
 H. A. Dau, A. Bagnall, K. Kamgar, C.-C. M. Yeh, Y. Zhu, S. Gharghabi, C. A. Ratanamahatana, E. Keogh, The UCR time series archive, IEEE/-CAA Journal of Automatica Sinica 6 (6) (2019) 1293–1305.
