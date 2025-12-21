@@ -1,6 +1,6 @@
 # ALT: Adaptive Law-Based Transformation
 
-**Adaptive Law-Based Transformation (ALT)** is an open-source Python package developed for efficient and accurate time series classification (TSC). ALT leverages adaptive law-based transformations[[1]](#1) to convert raw time series data into a linearly separable feature space, using variable-length shifted time windows. This approach enhances its predecessor, the linear law-based transformation (LLT), by capturing patterns at varying temporal scales with greater precision. ALT achieves state-of-the-art performance in TSC tasks across physics and related domains, all while maintaining minimal computational overhead.
+**Adaptive Law-Based Transformation (ALT)** is an open-source Python package developed for efficient and accurate time series classification (TSC). ALT leverages adaptive law-based transformations [[1]](#1) to convert raw time series data into a linearly separable feature space, using variable-length shifted time windows. This approach enhances its predecessor, the linear law-based transformation (LLT), by capturing patterns at varying temporal scales with greater precision. ALT achieves state-of-the-art performance in TSC tasks across physics and related domains, all while maintaining minimal computational overhead.
 
 ## Installation
 
@@ -102,7 +102,7 @@ If you use ALT in your research, please cite the package as follows:
 ```
 
 ## Source of data
-The data used in the study is sourced from the UCR Time Series Classification Archive[[3]](#3).
+The data used in the study is sourced from the UCR Time Series Classification Archive [[2]](#2), [[3]](#3).
 
 ## References
 <a id="1">[1]</a>
@@ -110,12 +110,10 @@ Marcell T. Kurbucz, Balázs Hajós, Balázs P. Halmos, Vince Á. Molnár, Antal 
 Adaptive Law-Based Transformation (ALT): A Lightweight Feature Representation for Time Series Classification, [arXiv preprint](https://arxiv.org/abs/2501.09217).
 
 <a id="2">[2]</a>
-Ratanamahatana, C. A., & Keogh, E. (2005, April).
-Three myths about dynamic time warping data mining. In Proceedings of the 2005 SIAM international conference on data mining (pp. 506-510). Society for Industrial and Applied Mathematics.
+H. A. Dau, A. Bagnall, K. Kamgar, C.-C. M. Yeh, Y. Zhu, S. Gharghabi, C. A. Ratanamahatana, E. Keogh, The UCR time series archive, IEEE/-CAA Journal of Automatica Sinica 6 (6) (2019) 1293–1305.
 
 <a id="3">[3]</a>
-Bagnall, A., Dau, H. A., Lines, J., Flynn, M., Large, J., Bostrom, A., ... & Keogh, E. (2018).
-The UEA multivariate time series classification archive, 2018. arXiv preprint arXiv:1811.00075.
+H. A. Dau, E. Keogh, K. Kamgar, C.-C. M. Yeh, Y. Zhu, S. Gharghabi, C. A. Ratanamahatana, Yanping, B. Hu, N. Begum, A. Bagnall, A. Mueen, G. Batista, Hexagon-ML, The ucr time series classification archive, https://www.cs.ucr.edu/~eamonn/time_series_data_2018/ (October 2018).
 
 ## License
 
