@@ -9,7 +9,7 @@ The package can be installed with pip using the following command:
    pip install git+https://github.com/Datacompintensive/ALT.git
    ```
 
-To obtain datasets adittional packages might be required. In the example the `aeon` packege is used which can be installed as:
+To obtain datasets additional packages might be required. In the example the `aeon` package is used which can be installed as:
 ```bash
 pip install aeon
 ``` 
@@ -22,11 +22,12 @@ We recommend familiarizing yourself with the provided example, and modifying tha
 First the package has to be imported.
 ```python
 import alt_ts
+import torch
 ```
 
 ### Loading data 
 
-In the example code we used the aeon module to get the data from the web. You can however load the data from local source. It should be transfromed to a two or three dimensional numpy array or torch tensor. The first should index the instances, the second *(optional)* dimension should index the time series belonging to a given instance *(in case of univariate data this can be omitted)*, and the last one should be the time.
+In the example code we used the aeon module to get the data from the web. You can however load the data from local source. It should be transformed to a two or three dimensional numpy array or torch tensor. The first should index the instances, the second *(optional)* dimension should index the time series belonging to a given instance *(in case of univariate data this can be omitted)*, and the last one should be the time.
 
 ### Initializing ALT
 
@@ -37,15 +38,15 @@ extr_methods = [["mean_all"], ["mean", 0.05]]
 device = "cuda" if torch.cuda.is_available() else "cpu"
 ```
 
-To initialize ALT, at least you need to suply the data, and the classes of the instances.
+To initialize ALT, at least you need to supply the data, and the classes of the instances.
 ```python
 alt = alt_ts.ALT(learn_set, learn_classes, R=R, L=L, K=K, device=device)
 ```
 
 The class labels should be numbers, preferably integers.
-You can choose the device on witch ALT will run, by setting the `device` parameter with a `torch.device` or a string accepted by the `torch.device()` method. 
-The `train_length` parameter is for when the data is not uniform length, it should be a list (or equivalent) with the same length as there are insatnces.
-Finally you can set the `R`, `L` and `K` parameters, where `R` is the length of the time window for series extraction, `L` is the dimension of embedding, and `K` is the shift between extracted time windows. Each argument can be a single value or a list.  If two or more are given as a list, the length should be the same. The ones supplied with a single value will be padded to a list of suitable length. The corresponding elements of `R` and `L` should satisfy the formula *2l-2|r-1*. Additionally you can set elements of `R` to `None`, then an appropriate l will be computed *(2l-1)*.
+You can choose the device on which ALT will run, by setting the `device` parameter with a `torch.device` or a string accepted by the `torch.device()` method. 
+The `train_length` parameter is for when the data is not uniform length, it should be a list (or equivalent) with the same length as there are instances.
+Finally you can set the `R`, `L` and `K` parameters, where `R` is the length of the time window for series extraction, `L` is the dimension of embedding, and `K` is the shift between extracted time windows. Each argument can be a single value or a list.  If two or more are given as a list, the length should be the same. The ones supplied with a single value will be padded to a list of suitable length. The corresponding elements of `R` and `L` should satisfy the formula $2L-2|R-1$. Additionally you can set elements of `R` to `None`, then an appropriate $R$ will be computed as $(2L-1)$.
 
 ### Training the model
 
@@ -53,7 +54,7 @@ The train method trains the model.
 ```python
 alt.train()
 ```
-Its only parameter is `cleanup` which is false by default. If true, after the end of training ALT deletes the date used for training, thus freeing up memory. 
+Its only parameter is `cleanup` which is false by default. If true, after the end of training ALT deletes the data used for training, thus freeing up memory. 
 
 ### Saving and loading the model
 
@@ -62,7 +63,7 @@ You can save the trained model with the save method, to load it up after.
 
 ### Transforming data
 
-You can transfrom an instance, with the `transform` method, or a set of instances with the `transform_set` method. For example
+You can transform an instance, with the `transform` method, or a set of instances with the `transform_set` method. For example
 ```python
 transformed_set = alt.transform_set(transform_set, extr_methods=extr_methods,
                                     test_classes=transform_classes, 
@@ -70,14 +71,14 @@ transformed_set = alt.transform_set(transform_set, extr_methods=extr_methods,
                                     save_file_mode="New file")
 ```
 
-The data to transform should have the shape as described at the training data. `transform` returns with a tensor of features, while `transform_set` returns with a two dimensional tensor of features. If `save_file_name`, and `test_classes` are supplied to the `transform_set` method, it also saves the generated features in csv format. The parameter `save_file_mode` accepts on of the strings from "New file", "Append feature" or "Append instance", and controls the mode of saving.
+The data to transform should have the shape as described at the training data. `transform` returns with a tensor of features, while `transform_set` returns with a two dimensional tensor of features. If `save_file_name`, and `test_classes` are supplied to the `transform_set` method, it also saves the generated features in csv format. The parameter `save_file_mode` accepts one of the strings from "New file", "Append feature" or "Append instance", and controls the mode of saving.
 
 #### Currently implemented extraction methods
 
-For the `transform` and `transfrom_set` functions you need to specify the list of used extraction methods. The currently implemented methods are:
+For the `transform` and `transform_set` functions you need to specify the list of used extraction methods. The currently implemented methods are:
 
 - `["mean_all"]`: Calculates the average of all the values in a partition.
-- `["method", p]`: Calculates the p-th percentile along the rows, then use the method to calculate the final feature.
+- `["method", p]`: Calculates the p-th percentile along the rows, then uses the method to calculate the final feature.
 
 The following methods are implemented:
 - `mean`: average
@@ -125,7 +126,7 @@ Adaptive Law-Based Transformation (ALT): A Lightweight Feature Representation fo
 H. A. Dau, A. Bagnall, K. Kamgar, C.-C. M. Yeh, Y. Zhu, S. Gharghabi, C. A. Ratanamahatana, E. Keogh, The UCR time series archive, IEEE/-CAA Journal of Automatica Sinica 6 (6) (2019) 1293–1305.
 
 <a id="3">[3]</a>
-H. A. Dau, E. Keogh, K. Kamgar, C.-C. M. Yeh, Y. Zhu, S. Gharghabi, C. A. Ratanamahatana, Yanping, B. Hu, N. Begum, A. Bagnall, A. Mueen, G. Batista, Hexagon-ML, The ucr time series classification archive, https://www.cs.ucr.edu/~eamonn/time_series_data_2018/ (October 2018).
+H. A. Dau, E. Keogh, K. Kamgar, C.-C. M. Yeh, Y. Zhu, S. Gharghabi, C. A. Ratanamahatana, Yanping, B. Hu, N. Begum, A. Bagnall, A. Mueen, G. Batista, Hexagon-ML, The UCR time series classification archive, https://www.cs.ucr.edu/~eamonn/time_series_data_2018/ (October 2018).
 
 ## License
 
