@@ -3,7 +3,7 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "alt-ts"
+name = "altx"
 version = "1.0.0"
 description = "Adaptive Law-Based Transformation (ALT) for time series classification."
 authors = [
@@ -26,4 +26,4 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["alt_ts"]
+packages = ["altx"]

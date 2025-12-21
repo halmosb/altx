@@ -1,6 +1,6 @@
-# ALT: Adaptive Law-Based Transformation
+# `altx`: Adaptive Law-Based Transformation
 
-**Adaptive Law-Based Transformation (ALT)** is an open-source Python package developed for efficient and accurate time series classification (TSC). ALT leverages adaptive law-based transformations [[1]](#1) to convert raw time series data into a linearly separable feature space, using variable-length shifted time windows. This approach enhances its predecessor, the linear law-based transformation (LLT), by capturing patterns at varying temporal scales with greater precision. ALT achieves state-of-the-art performance in TSC tasks across physics and related domains, all while maintaining minimal computational overhead.
+**Adaptive Law-Based Transformation (`altx`)** is an open-source Python package developed for efficient and accurate time series classification (TSC). The package leverages adaptive law-based transformations [[1]](#1) to convert raw time series data into a linearly separable feature space, using variable-length shifted time windows. This approach enhances its predecessor, the linear law-based transformation (LLT), by capturing patterns at varying temporal scales with greater precision. `altx` achieves state-of-the-art performance in TSC tasks across physics and related domains, all while maintaining minimal computational overhead.
 
 ## Installation
 
@@ -21,7 +21,7 @@ We recommend familiarizing yourself with the provided example, and modifying tha
 ### Importing
 First the package has to be imported.
 ```python
-import alt_ts
+import altx
 import torch
 ```
 
@@ -29,7 +29,7 @@ import torch
 
 In the example code we used the aeon module to get the data from the web. You can however load the data from local source. It should be transformed to a two or three dimensional numpy array or torch tensor. The first should index the instances, the second *(optional)* dimension should index the time series belonging to a given instance *(in case of univariate data this can be omitted)*, and the last one should be the time.
 
-### Initializing ALT
+### Initializing `altx`
 
 First the parameters have to be set as
 ```python
@@ -38,13 +38,13 @@ extr_methods = [["mean_all"], ["mean", 0.05]]
 device = "cuda" if torch.cuda.is_available() else "cpu"
 ```
 
-To initialize ALT, at least you need to supply the data, and the classes of the instances.
+To initialize `altx`, at least you need to supply the data, and the classes of the instances.
 ```python
-alt = alt_ts.ALT(learn_set, learn_classes, R=R, L=L, K=K, device=device)
+alt = altx.ALT(learn_set, learn_classes, R=R, L=L, K=K, device=device)
 ```
 
 The class labels should be numbers, preferably integers.
-You can choose the device on which ALT will run, by setting the `device` parameter with a `torch.device` or a string accepted by the `torch.device()` method. 
+You can choose the device on which `altx` will run, by setting the `device` parameter with a `torch.device` or a string accepted by the `torch.device()` method. 
 The `train_length` parameter is for when the data is not uniform length, it should be a list (or equivalent) with the same length as there are instances.
 Finally you can set the `R`, `L` and `K` parameters, where `R` is the length of the time window for series extraction, `L` is the dimension of embedding, and `K` is the shift between extracted time windows. Each argument can be a single value or a list.  If two or more are given as a list, the length should be the same. The ones supplied with a single value will be padded to a list of suitable length. The corresponding elements of `R` and `L` should satisfy the formula $2L-2|R-1$. Additionally you can set elements of `R` to `None`, then an appropriate $R$ will be computed as $(2L-1)$.
 
@@ -54,7 +54,7 @@ The train method trains the model.
 ```python
 alt.train()
 ```
-Its only parameter is `cleanup` which is false by default. If true, after the end of training ALT deletes the data used for training, thus freeing up memory. 
+Its only parameter is `cleanup` which is false by default. If true, after the end of training `altx` deletes the data used for training, thus freeing up memory. 
 
 ### Saving and loading the model
 
@@ -90,7 +90,7 @@ After transformation you can analyze the features with Python, MATLAB, or any ot
 
 ## Citation
 
-If you use ALT in your research, please cite the following articles:
+If you use `altx` in your research, please cite the following articles:
 
 ```bibtex
 @article{kurbucz2025adaptive,
@@ -133,4 +133,4 @@ This project is licensed under the GPLv3.
 
 ## Acknowledgments
 
-We thank the scientific community for providing valuable datasets and benchmarks that guided the development and validation of ALT.
+We thank the scientific community for providing valuable datasets and benchmarks that guided the development and validation of `altx`.

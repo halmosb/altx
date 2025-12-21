@@ -8,8 +8,6 @@ import os
 import gc
 import copy
         
-    
-
 class ALT:
     """
     Adaptive Law-Based Transformation.

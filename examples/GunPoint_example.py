@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-import alt_ts
+import altx
 
 from aeon.datasets import load_classification
 
@@ -17,7 +17,7 @@ extr_methods = [["mean_all"], ["mean", 0.05]]
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #Transform the data
-alt = alt_ts.ALT(learn_set, learn_classes, R=R, L=L, K=K, device=device)
+alt = altx.ALT(learn_set, learn_classes, R=R, L=L, K=K, device=device)
 alt.train()
 transformed_set = alt.transform_set(transform_set, extr_methods=extr_methods,
                                     test_classes=transform_classes, 
