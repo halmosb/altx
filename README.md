@@ -89,15 +89,27 @@ After transformation you can analyze the features with Python, MATLAB, or any ot
 
 ## Citation
 
-If you use ALT in your research, please cite the package as follows:
+If you use ALT in your research, please cite the following articles:
 
 ```bibtex
-@misc{ALT2025,
-  author = {Kurbucz, Marcell T and Haj{\'o}s, Bal{\'a}zs and Halmos, Bal{\'a}zs P and Moln{\'a}r, Vince {\'A} and Jakov{\'a}c, Antal},
-  title = {ALT: Adaptive Law-Based Transformation for Time Series Classification},
-  year = {2025},
-  howpublished = {\url{https://github.com/Datacompintensive/ALT}},
-  note = {Python package}
+@article{kurbucz2025adaptive,
+  title={Adaptive law-based feature representation for time series classification},
+  author={Kurbucz, Marcell T and Haj{\'o}s, Bal{\'a}zs and Halmos, Bal{\'a}zs P and Moln{\'a}r, Vince {\'A} and Jakov{\'a}c, Antal},
+  journal={Scientific Reports},
+  volume={15},
+  number={1},
+  pages={41775},
+  year={2025},
+  url={https://doi.org/10.1038/s41598-025-25667-0},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{halmos2025alt,
+  title={ALT: A Python Package for Lightweight Feature Representation in Time Series Classification},
+  author={Halmos, Bal{\'a}zs P and Haj{\'o}s, Bal{\'a}zs and Moln{\'a}r, Vince {\'A} and Kurbucz, Marcell T and Jakov{\'a}c, Antal},
+  journal={arXiv preprint arXiv:2504.12841},
+  year={2025},
+  url={https://arxiv.org/abs/2504.12841}
 }
 ```
 
