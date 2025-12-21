@@ -6,7 +6,7 @@
 
 The package can be installed with pip using the following command:
    ```bash
-   pip install git+https://github.com/Datacompintensive/ALT.git
+   pip install git+https://github.com/dcintlab/altx.git
    ```
 
 To obtain datasets additional packages might be required. In the example the `aeon` package is used which can be installed as:
