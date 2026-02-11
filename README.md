@@ -102,16 +102,24 @@ If you use `altx` in your research, please cite the following articles:
   pages={41775},
   year={2025},
   url={https://doi.org/10.1038/s41598-025-25667-0},
+  doi={10.1038/s41598-025-25667-0},
   publisher={Nature Publishing Group UK London}
 }
 
-@article{halmos2025alt,
-  title={ALT: A Python Package for Lightweight Feature Representation in Time Series Classification},
-  author={Halmos, Bal{\'a}zs P and Haj{\'o}s, Bal{\'a}zs and Moln{\'a}r, Vince {\'A} and Kurbucz, Marcell T and Jakov{\'a}c, Antal},
-  journal={arXiv preprint arXiv:2504.12841},
-  year={2025},
-  url={https://arxiv.org/abs/2504.12841}
+@article{halmos2026altx,
+  title = {altx: a python package for adaptive law-based transformation in time series classification},
+  author = {Halmos, Bal{\'a}zs P and Haj{\'o}s, Bal{\'a}zs and Á Moln{\'a}r, Vince and Kurbucz, Marcell T and Jakov{\'a}c, Antal},
+  doi = {10.1088/2632-2153/ae3e4f},
+  url = {https://doi.org/10.1088/2632-2153/ae3e4f},
+  journal = {Machine Learning: Science and Technology},
+  year = {2026},
+  month = {feb},
+  publisher = {IOP Publishing},
+  volume = {7},
+  number = {1},
+  pages = {015034},
 }
+
 ```
 
 ## Source of data
