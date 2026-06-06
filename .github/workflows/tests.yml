@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: write
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     container:
       image: ghcr.io/halmosb/docker-builder/python:${{ matrix.python-version }}-cpu-v0.3.4
       options: --user 0
