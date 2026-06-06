@@ -22,7 +22,8 @@ dependencies = [
     "numpy>=2.0",
     "pandas>=2.0",
     "torch>=2.12",
-    "matplotlib>=3.10"
+    "matplotlib>=3.10",
+    "pre-commit>=3.7"
 ]
 
 [project.optional-dependencies]
