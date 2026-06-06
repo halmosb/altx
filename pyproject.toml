@@ -10,7 +10,7 @@ authors = [
     { name = "Marcell Tamás Kurbucz", email = "m.kurbucz@ucl.ac.uk" }
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
@@ -31,3 +31,54 @@ examples = ["aeon>=1.4"]
 
 [tool.setuptools]
 packages = ["altx"]
+
+# --------------------------------------------------
+# Black formatting
+# --------------------------------------------------
+
+[tool.black]
+
+line-length = 88
+target-version = ["py312"]
+
+# --------------------------------------------------
+# Ruff linter
+# --------------------------------------------------
+
+[tool.ruff]
+
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes — undefined names, unused imports
+    "I",    # isort — import ordering
+    "N",    # pep8-naming — class/function/variable naming conventions
+    "D",    # pydocstyle — docstring style
+    "UP",   # pyupgrade — modern Python syntax
+    "B",    # flake8-bugbear — common bugs and design issues
+    "C4",   # flake8-comprehensions — idiomatic list/dict/set comprehensions
+    "SIM",  # flake8-simplify — flags unnecessarily complex code
+    "RUF",  # Ruff-specific rules
+]
+ignore = [
+    "E741", # ambiguous variable name
+    "N802", # invalid function name
+    "N803", # invalid argument name
+    "N806", # non lowercase variable in function
+    "N814", # camelcase imported as constant
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+# --------------------------------------------------
+# MyPy typing
+# --------------------------------------------------
+
+[tool.mypy]
+
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
