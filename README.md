@@ -12,7 +12,7 @@ The package can be installed with pip using the following command:
 To obtain datasets additional packages might be required. In the example the `aeon` package is used which can be installed as:
 ```bash
 pip install aeon
-``` 
+```
 
 ## Usage
 
@@ -25,7 +25,7 @@ import altx
 import torch
 ```
 
-### Loading data 
+### Loading data
 
 In the example code we used the aeon module to get the data from the web. You can however load the data from local source. It should be transformed to a two or three dimensional numpy array or torch tensor. The first should index the instances, the second *(optional)* dimension should index the time series belonging to a given instance *(in case of univariate data this can be omitted)*, and the last one should be the time.
 
@@ -44,7 +44,7 @@ alt = altx.ALT(learn_set, learn_classes, R=R, L=L, K=K, device=device)
 ```
 
 The class labels should be numbers, preferably integers.
-You can choose the device on which `altx` will run, by setting the `device` parameter with a `torch.device` or a string accepted by the `torch.device()` method. 
+You can choose the device on which `altx` will run, by setting the `device` parameter with a `torch.device` or a string accepted by the `torch.device()` method.
 The `train_length` parameter is for when the data is not uniform length, it should be a list (or equivalent) with the same length as there are instances.
 Finally you can set the `R`, `L` and `K` parameters, where `R` is the length of the time window for series extraction, `L` is the dimension of embedding, and `K` is the shift between extracted time windows. Each argument can be a single value or a list.  If two or more are given as a list, the length should be the same. The ones supplied with a single value will be padded to a list of suitable length. The corresponding elements of `R` and `L` should satisfy the formula $2L-2|R-1$. Additionally you can set elements of `R` to `None`, then an appropriate $R$ will be computed as $(2L-1)$.
 
@@ -54,7 +54,7 @@ The train method trains the model.
 ```python
 alt.train()
 ```
-Its only parameter is `cleanup` which is false by default. If true, after the end of training `altx` deletes the data used for training, thus freeing up memory. 
+Its only parameter is `cleanup` which is false by default. If true, after the end of training `altx` deletes the data used for training, thus freeing up memory.
 
 ### Saving and loading the model
 
@@ -66,8 +66,8 @@ You can save the trained model with the save method, to load it up after.
 You can transform an instance, with the `transform` method, or a set of instances with the `transform_set` method. For example
 ```python
 transformed_set = alt.transform_set(transform_set, extr_methods=extr_methods,
-                                    test_classes=transform_classes, 
-                                    save_file_name="results.csv", 
+                                    test_classes=transform_classes,
+                                    save_file_name="results.csv",
                                     save_file_mode="New file")
 ```
 
