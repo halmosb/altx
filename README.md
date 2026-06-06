@@ -7,13 +7,13 @@
 ## Installation
 
 The package can be installed with pip using the following command:
-   ```bash
-   pip install git+https://github.com/dcintlab/altx.git
-   ```
-
-To obtain datasets additional packages might be required. In the example the `aeon` package is used which can be installed as:
 ```bash
-pip install aeon
+pip install git+ssh://git@github.com/halmosb/altx.git
+```
+
+To run the examples, install the optional dependencies as well:
+```bash
+pip install "git+ssh://git@github.com/halmosb/altx.git#egg=altx[examples]"
 ```
 
 ## Usage
