@@ -33,6 +33,34 @@ examples = ["aeon>=1.4"]
 packages = ["altx"]
 
 # --------------------------------------------------
+# Pytest configuration
+# --------------------------------------------------
+
+[tool.pytest.ini_options]
+
+testpaths = [
+    "tests"
+]
+
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--disable-warnings"
+]
+
+# --------------------------------------------------
+# Coverage configuration
+# --------------------------------------------------
+
+[tool.coverage.run]
+
+source = ["altx"]
+
+omit = [
+    "tests/*"
+]
+
+# --------------------------------------------------
 # Black formatting
 # --------------------------------------------------
 
