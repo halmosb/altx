@@ -684,17 +684,18 @@ class Altx:
                 f"match with number of test instances ({features.shape[0]})."
             )
         features_np = features.cpu().numpy()  # convert to Numpy array
+        test_classes_np = test_classes.cpu().numpy()
         # New file, or if the file doesn't exist.
         if save_file_mode == "New file" or not os.path.exists(save_file_name):
             df = pd.DataFrame(features_np)  # convert to a dataframe
-            df["Class"] = test_classes
+            df["Class"] = test_classes_np
             # n = len(list(extr_methods.keys()))
             feat_list = self._generate_header(extr_methods)
             df.to_csv(save_file_name, index=False, header=feat_list)
         # Append instance
         elif save_file_mode == "Append instance":
             df = pd.DataFrame(features_np)  # convert to a dataframe
-            df["Class"] = test_classes
+            df["Class"] = test_classes_np
             df.to_csv(save_file_name, mode="a")  # save to file
         # Apppend feature
         elif save_file_mode == "Append feature":
@@ -704,7 +705,7 @@ class Altx:
             df = pd.DataFrame(new_features)  # convert to a dataframe
             # n = len(list(extr_methods.keys()))
             feat_list = list(old_df)[:-1] + self._generate_header(extr_methods)
-            df["Class"] = test_classes
+            df["Class"] = test_classes_np
             df.to_csv(save_file_name, index=False, header=feat_list)
         # Default
         else:

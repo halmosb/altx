@@ -73,6 +73,16 @@ ignore = [
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
 
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]  # Docstring rules relaxed for test files
+
+# --------------------------------------------------
+# Pytest
+# --------------------------------------------------
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
 # --------------------------------------------------
 # MyPy typing
 # --------------------------------------------------
@@ -82,3 +92,4 @@ convention = "numpy"
 python_version = "3.12"
 strict = true
 ignore_missing_imports = true
+exclude = ["tests/"]
