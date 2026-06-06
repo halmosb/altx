@@ -33,6 +33,34 @@ examples = ["aeon>=1.4"]
 packages = ["altx"]
 
 # --------------------------------------------------
+# Pytest configuration
+# --------------------------------------------------
+
+[tool.pytest.ini_options]
+
+testpaths = [
+    "tests"
+]
+
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--disable-warnings"
+]
+
+# --------------------------------------------------
+# Coverage configuration
+# --------------------------------------------------
+
+[tool.coverage.run]
+
+source = ["altx"]
+
+omit = [
+    "tests/*"
+]
+
+# --------------------------------------------------
 # Black formatting
 # --------------------------------------------------
 
@@ -73,6 +101,9 @@ ignore = [
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
 
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]  # Docstring rules relaxed for test files
+
 # --------------------------------------------------
 # MyPy typing
 # --------------------------------------------------
@@ -82,3 +113,4 @@ convention = "numpy"
 python_version = "3.12"
 strict = true
 ignore_missing_imports = true
+exclude = ["tests/"]

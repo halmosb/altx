@@ -1,5 +1,7 @@
 # `altx`: Adaptive Law-Based Transformation
 
+[![Python tests](https://github.com/halmosb/altx/actions/workflows/tests.yml/badge.svg)](https://github.com/halmosb/altx/actions/workflows/tests.yml) [![coverage](.badges/coverage.svg)](https://github.com/halmosb/altx/actions/workflows/tests.yml)
+
 **Adaptive Law-Based Transformation (`altx`)** is an open-source Python package developed for efficient and accurate time series classification (TSC). The package leverages adaptive law-based transformations [[1]](#1) to convert raw time series data into a linearly separable feature space, using variable-length shifted time windows. This approach enhances its predecessor, the linear law-based transformation (LLT), by capturing patterns at varying temporal scales with greater precision. `altx` achieves state-of-the-art performance in TSC tasks across physics and related domains, all while maintaining minimal computational overhead.
 
 ## Installation
