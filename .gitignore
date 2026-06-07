@@ -1,5 +1,8 @@
+# Saved model
+*.pkl
+
 # vim
-.swp
+*.swp
 
 # Data
 *.csv
