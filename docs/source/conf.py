@@ -26,7 +26,7 @@ try:
     release = _get_scm_version(root="../..", relative_to=__file__)
 except Exception:
     try:
-        release = _pkg_version("artificial-dataset")
+        release = _pkg_version("altx")
     except PackageNotFoundError:
         release = "0.0.0"
 
