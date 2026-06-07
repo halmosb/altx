@@ -41,9 +41,13 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
+    "sphinx.ext.mathjax",
     "myst_parser",
     "sphinx_autodoc_typehints",
+    "sphinx_copybutton",
 ]
+
+myst_enable_extensions = ["dollarmath"]
 
 
 templates_path = ["_templates"]
