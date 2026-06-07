@@ -39,6 +39,14 @@ class ExtractMethods:
         -------
         torch.Tensor
             The excess kurtosis of the computed percentiles.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ExtractMethods
+        >>> p = torch.tensor([[[1.], [2.], [3.], [4.], [5.]]])
+        >>> ExtractMethods.excess_kurtosis(p)
+        tensor([[-1.3000]])
         """
         mean = torch.mean(percentiles, dim=1)
         deviations = percentiles - mean
@@ -71,6 +79,16 @@ class ExtractMethods:
         -------
         torch.Tensor
             The n-th moment of the computed percentiles.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ExtractMethods
+        >>> p = torch.tensor([[[1.], [2.], [3.], [4.], [5.]]])
+        >>> ExtractMethods.nth_moment(p, n=2)
+        tensor([[2.]])
+        >>> ExtractMethods.nth_moment(p, n=4)
+        tensor([[6.8000]])
         """
         mean = torch.mean(percentiles, dim=1)
         deviations = percentiles - mean
@@ -115,6 +133,26 @@ class ExtractMethods:
         The return tensor has the shape (n, m), where n is the number
         of used extraction methods and m is the size of the input
         tensor along the third dimension.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ExtractMethods
+        >>> F = torch.ones(5, 20, 2)
+        >>> ExtractMethods.extract(F, [["mean", 0.5]])
+        tensor([[1., 1.]])
+        >>> ExtractMethods.extract(F, [["var", 0.5]])
+        tensor([[0., 0.]])
+        >>> ExtractMethods.extract(F, [["mean_all", None]])
+        tensor([[1., 1.]])
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> F2 = torch.randn(5, 20, 1).abs() + 0.5
+        >>> methods = [["mean", 0.05], ["var", 0.1], ["mean_all", None]]
+        >>> ExtractMethods.extract(F2, methods)
+        tensor([[0.4577],
+                [0.0499],
+                [2.1054]])
         """
         if type(device) is str:
             device = torch.device(device)

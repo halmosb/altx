@@ -133,6 +133,22 @@ class Altx:
             does not satisfy the form step*(2*L-2)+1.
         TypeError
             If K and L types are incompatible or R has an invalid type.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ALT as Altx
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> train_data = torch.randn(6, 50)
+        >>> train_classes = torch.tensor([0, 0, 0, 1, 1, 1])
+        >>> model = Altx(train_data, train_classes, L=3, K=1)
+        >>> model.noc
+        2
+        >>> model.m
+        1
+        >>> model.RLK
+        ((5, 3, 1),)
         """
         if device is str:
             self.device = torch.device(device)
@@ -361,6 +377,20 @@ class Altx:
         ----------
         save_file_name : str
             Path of the save file.
+
+        Examples
+        --------
+        >>> import torch, tempfile, os
+        >>> from altx import ALT as Altx
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> model.train()
+        >>> path = tempfile.mktemp(suffix=".pkl")
+        >>> model.save(path)
+        >>> os.path.exists(path)
+        True
+        >>> os.unlink(path)
         """
         model = {
             "RLK": self.RLK,
@@ -390,6 +420,24 @@ class Altx:
         -----
         The save file does not contain the training data, so further
         training is not possible after loading.
+
+        Examples
+        --------
+        >>> import torch, tempfile, os
+        >>> from altx import ALT as Altx
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> model.train()
+        >>> path = tempfile.mktemp(suffix=".pkl")
+        >>> model.save(path)
+        >>> loaded = Altx.load(path)
+        >>> loaded.device = model.device
+        >>> loaded.noc
+        2
+        >>> loaded.RLK
+        ((5, 3, 1),)
+        >>> os.unlink(path)
         """
         with open(load_file_name, "rb") as file:
             model = pickle.load(file)
@@ -417,6 +465,20 @@ class Altx:
         ------
         RuntimeError
             If training is attempted without training data.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ALT as Altx
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> model.train()
+        >>> (5, 3, 1) in model.Ps
+        True
+        >>> _, P = model.Ps[(5, 3, 1)]
+        >>> P.shape
+        torch.Size([3, 276, 1])
         """
         if self.train_set is None:
             raise RuntimeError(
@@ -513,6 +575,24 @@ class Altx:
         ------
         ValueError
             If the given extraction method is not implemented.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ALT as Altx
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> model.train()
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> z = torch.randn(50)
+        >>> features = model.transform(z, [["mean", 0.05]])
+        >>> features.shape
+        torch.Size([2])
+        >>> features = model.transform(z, [["mean", 0.05], ["var", 0.1]])
+        >>> features.shape
+        torch.Size([4])
         """
         for i in range(len(extr_methods)):
             if extr_methods[i] == ["mean_all"]:
@@ -594,6 +674,25 @@ class Altx:
             If the given extraction method is not implemented.
         TypeError
             If save_file_name is given but test_classes is None.
+
+        Examples
+        --------
+        >>> import torch
+        >>> from altx import ALT as Altx
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> model.train()
+        >>> torch.manual_seed(0)
+        <torch._C.Generator object at ...>
+        >>> test_set = torch.randn(3, 50)
+        >>> features = model.transform_set(test_set, [["mean", 0.05]])
+        >>> features.shape
+        torch.Size([3, 2])
+        >>> features
+        tensor([[0.0077, 0.0113],
+                [0.0122, 0.0163],
+                [0.0077, 0.0104]])
         """
         for i in range(len(extr_methods)):
             if extr_methods[i] in [["mean_all"]]:
