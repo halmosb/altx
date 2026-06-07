@@ -67,3 +67,7 @@ html_theme_options = {
     "show_toc_level": 2,
     "navbar_align": "left",
 }
+
+# Strip >>> and ... prompts when the copy button is clicked
+copybutton_prompt_text = r">>> |\.\.\. "
+copybutton_prompt_is_regexp = True

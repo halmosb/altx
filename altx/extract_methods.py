@@ -145,8 +145,7 @@ class ExtractMethods:
         tensor([[0., 0.]])
         >>> ExtractMethods.extract(F, [["mean_all", None]])
         tensor([[1., 1.]])
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
+        >>> _ = torch.manual_seed(0)
         >>> F2 = torch.randn(5, 20, 1).abs() + 0.5
         >>> methods = [["mean", 0.05], ["var", 0.1], ["mean_all", None]]
         >>> ExtractMethods.extract(F2, methods)

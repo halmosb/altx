@@ -138,8 +138,7 @@ class Altx:
         --------
         >>> import torch
         >>> from altx import ALT as Altx
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
+        >>> _ = torch.manual_seed(0)
         >>> train_data = torch.randn(6, 50)
         >>> train_classes = torch.tensor([0, 0, 0, 1, 1, 1])
         >>> model = Altx(train_data, train_classes, L=3, K=1)
@@ -382,9 +381,12 @@ class Altx:
         --------
         >>> import torch, tempfile, os
         >>> from altx import ALT as Altx
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
-        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> _ = torch.manual_seed(0)
+        >>> model = Altx(
+        ...     torch.randn(6, 50),
+        ...     torch.tensor([0, 0, 0, 1, 1, 1]),
+        ...     L=3, K=1,
+        ... )
         >>> model.train()
         >>> path = tempfile.mktemp(suffix=".pkl")
         >>> model.save(path)
@@ -425,9 +427,12 @@ class Altx:
         --------
         >>> import torch, tempfile, os
         >>> from altx import ALT as Altx
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
-        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> _ = torch.manual_seed(0)
+        >>> model = Altx(
+        ...     torch.randn(6, 50),
+        ...     torch.tensor([0, 0, 0, 1, 1, 1]),
+        ...     L=3, K=1,
+        ... )
         >>> model.train()
         >>> path = tempfile.mktemp(suffix=".pkl")
         >>> model.save(path)
@@ -470,9 +475,12 @@ class Altx:
         --------
         >>> import torch
         >>> from altx import ALT as Altx
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
-        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> _ = torch.manual_seed(0)
+        >>> model = Altx(
+        ...     torch.randn(6, 50),
+        ...     torch.tensor([0, 0, 0, 1, 1, 1]),
+        ...     L=3, K=1,
+        ... )
         >>> model.train()
         >>> (5, 3, 1) in model.Ps
         True
@@ -580,12 +588,14 @@ class Altx:
         --------
         >>> import torch
         >>> from altx import ALT as Altx
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
-        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> _ = torch.manual_seed(0)
+        >>> model = Altx(
+        ...     torch.randn(6, 50),
+        ...     torch.tensor([0, 0, 0, 1, 1, 1]),
+        ...     L=3, K=1,
+        ... )
         >>> model.train()
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
+        >>> _ = torch.manual_seed(0)
         >>> z = torch.randn(50)
         >>> features = model.transform(z, [["mean", 0.05]])
         >>> features.shape
@@ -679,12 +689,14 @@ class Altx:
         --------
         >>> import torch
         >>> from altx import ALT as Altx
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
-        >>> model = Altx(torch.randn(6, 50), torch.tensor([0, 0, 0, 1, 1, 1]), L=3, K=1)
+        >>> _ = torch.manual_seed(0)
+        >>> model = Altx(
+        ...     torch.randn(6, 50),
+        ...     torch.tensor([0, 0, 0, 1, 1, 1]),
+        ...     L=3, K=1,
+        ... )
         >>> model.train()
-        >>> torch.manual_seed(0)
-        <torch._C.Generator object at ...>
+        >>> _ = torch.manual_seed(0)
         >>> test_set = torch.randn(3, 50)
         >>> features = model.transform_set(test_set, [["mean", 0.05]])
         >>> features.shape
