@@ -142,11 +142,11 @@ class Altx:
         >>> train_data = torch.randn(6, 50)
         >>> train_classes = torch.tensor([0, 0, 0, 1, 1, 1])
         >>> model = Altx(train_data, train_classes, L=3, K=1)
-        >>> model.noc
+        >>> print(model.noc)
         2
-        >>> model.m
+        >>> print(model.m)
         1
-        >>> model.RLK
+        >>> print(model.RLK)
         ((5, 3, 1),)
         """
         if device is str:
@@ -390,7 +390,7 @@ class Altx:
         >>> model.train()
         >>> path = tempfile.mktemp(suffix=".pkl")
         >>> model.save(path)
-        >>> os.path.exists(path)
+        >>> print(os.path.exists(path))
         True
         >>> os.unlink(path)
         """
@@ -438,9 +438,9 @@ class Altx:
         >>> model.save(path)
         >>> loaded = Altx.load(path)
         >>> loaded.device = model.device
-        >>> loaded.noc
+        >>> print(loaded.noc)
         2
-        >>> loaded.RLK
+        >>> print(loaded.RLK)
         ((5, 3, 1),)
         >>> os.unlink(path)
         """
@@ -482,10 +482,10 @@ class Altx:
         ...     L=3, K=1,
         ... )
         >>> model.train()
-        >>> (5, 3, 1) in model.Ps
+        >>> print((5, 3, 1) in model.Ps)
         True
         >>> _, P = model.Ps[(5, 3, 1)]
-        >>> P.shape
+        >>> print(P.shape)
         torch.Size([3, 276, 1])
         """
         if self.train_set is None:
@@ -598,10 +598,10 @@ class Altx:
         >>> _ = torch.manual_seed(0)
         >>> z = torch.randn(50)
         >>> features = model.transform(z, [["mean", 0.05]])
-        >>> features.shape
+        >>> print(features.shape)
         torch.Size([2])
         >>> features = model.transform(z, [["mean", 0.05], ["var", 0.1]])
-        >>> features.shape
+        >>> print(features.shape)
         torch.Size([4])
         """
         for i in range(len(extr_methods)):
@@ -699,9 +699,9 @@ class Altx:
         >>> _ = torch.manual_seed(0)
         >>> test_set = torch.randn(3, 50)
         >>> features = model.transform_set(test_set, [["mean", 0.05]])
-        >>> features.shape
+        >>> print(features.shape)
         torch.Size([3, 2])
-        >>> features
+        >>> print(features)
         tensor([[0.0077, 0.0113],
                 [0.0122, 0.0163],
                 [0.0077, 0.0104]])
