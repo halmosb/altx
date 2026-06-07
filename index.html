@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>altx documentation &#8212; altx 1.0.0.post1.dev36+g475df2b6c documentation</title>
+    <title>altx — Adaptive Law-Based Transformation &#8212; altx 1.0.0.post1.dev38+g9e31e9729 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
 
-    <script src="_static/documentation_options.js?v=3ffae92e"></script>
+    <script src="_static/documentation_options.js?v=72dcb523"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -51,7 +51,7 @@
     <link rel="next" title="Installation" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.0.post1.dev36+g475df2b6c" />
+  <meta name="docsearch:version" content="1.0.0.post1.dev38+g9e31e9729" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -119,7 +119,7 @@
   
   
   
-    <p class="title logo__title">altx 1.0.0.post1.dev36+g475df2b6c documentation</p>
+    <p class="title logo__title">altx 1.0.0.post1.dev38+g9e31e9729 documentation</p>
   
 </a></div>
     
@@ -148,15 +148,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="development.html">
-    Development
+  <a class="nav-link nav-internal" href="api/modules.html">
+    altx
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="api/modules.html">
-    altx
+  <a class="nav-link nav-internal" href="development.html">
+    Development
   </a>
 </li>
 
@@ -257,15 +257,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="development.html">
-    Development
+  <a class="nav-link nav-internal" href="api/modules.html">
+    altx
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="api/modules.html">
-    altx
+  <a class="nav-link nav-internal" href="development.html">
+    Development
   </a>
 </li>
 
@@ -326,53 +326,119 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="altx-documentation">
-<h1>altx documentation<a class="headerlink" href="#altx-documentation" title="Link to this heading">#</a></h1>
-<p>Add your content using <code class="docutils literal notranslate"><span class="pre">reStructuredText</span></code> syntax. See the
-<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">reStructuredText</a>
-documentation for details.</p>
+  <section id="altx-adaptive-law-based-transformation">
+<h1>altx — Adaptive Law-Based Transformation<a class="headerlink" href="#altx-adaptive-law-based-transformation" title="Link to this heading">#</a></h1>
+<a class="reference external image-reference" href="https://github.com/halmosb/altx/actions/workflows/tests.yml"><img alt="Python tests" src="https://github.com/halmosb/altx/actions/workflows/tests.yml/badge.svg" />
+</a>
+<a class="reference external image-reference" href="https://github.com/halmosb/altx/actions/workflows/tests.yml"><img alt="Coverage" src="_images/coverage.svg" />
+</a>
+<p><strong>altx</strong> is an open-source Python package for efficient time series
+classification (TSC). It converts raw time series into a linearly
+separable feature space by discovering <em>linear laws</em> — eigenvectors of
+symmetric Hankel matrices that correspond to conserved quantities in the
+data. Variable-length shifted time windows let the algorithm capture
+patterns at multiple temporal scales simultaneously.</p>
+<p><code class="docutils literal notranslate"><span class="pre">altx</span></code> achieves state-of-the-art performance on TSC benchmarks from
+physics and related domains while keeping computational overhead low.</p>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-github">Installing from GitHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#conda-environment">Conda environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#uv-environment">uv environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-the-installation">Verifying the installation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#conceptual-overview">Conceptual overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#importing">Importing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#input-data-format">Input data format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#hyperparameters">Hyperparameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#step-1-initialise-the-model">Step 1 — Initialise the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#step-2-train">Step 2 — Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#step-3-transform">Step 3 — Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#step-4-save-and-load-the-model">Step 4 — Save and load the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#multivariate-time-series">Multivariate time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#multiple-r-l-k-configurations">Multiple <code class="docutils literal notranslate"><span class="pre">(R,</span> <span class="pre">L,</span> <span class="pre">K)</span></code> configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#variable-length-instances">Variable-length instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#gpu-acceleration">GPU acceleration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#extraction-methods">Extraction methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#how-the-feature-vector-is-structured">How the feature vector is structured</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#end-to-end-example">End-to-end example</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="development.html#running-the-tests">Running the tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html#pre-commit-hooks">Pre-commit hooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html#building-the-documentation">Building the documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html#continuous-integration-overview">Continuous integration overview</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api/modules.html">altx</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/altx.html">altx package</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 </ul>
 </div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">altx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+</div>
+<hr class="docutils" />
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h2>
+<p>The pipeline has two phases:</p>
+<p><strong>Train</strong> — For each <code class="docutils literal notranslate"><span class="pre">(R,</span> <span class="pre">L,</span> <span class="pre">K)</span></code> configuration, every training instance
+is scanned with a sliding window of length <code class="docutils literal notranslate"><span class="pre">R</span></code> (step <code class="docutils literal notranslate"><span class="pre">K</span></code>). Each
+window is embedded into a symmetric <code class="docutils literal notranslate"><span class="pre">L×L</span></code> Hankel matrix, and the
+eigenvector for the smallest absolute eigenvalue is stored as a <em>law</em>.</p>
+<p><strong>Transform</strong> — For a test instance, windows are projected onto every
+stored law. The resulting scores are partitioned by training class and
+summarised into scalar features by a chosen extraction method. The final
+feature vector has length <code class="docutils literal notranslate"><span class="pre">len(RLK)</span> <span class="pre">×</span> <span class="pre">noc</span> <span class="pre">×</span> <span class="pre">n_methods</span> <span class="pre">×</span> <span class="pre">m</span></code>.</p>
+</section>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">altx</span><span class="w"> </span><span class="kn">import</span> <span class="n">ALT</span> <span class="k">as</span> <span class="n">Altx</span>
+
+<span class="c1"># Training data: 6 univariate instances of length 50, two classes</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">train_data</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">train_classes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Altx</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_classes</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+
+<span class="c1"># Transform a test set</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">features</span>  <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform_set</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># torch.Size([4, 2])</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a> page for a full walkthrough with all options and
+extraction methods.</p>
+</section>
+<section id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h2>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">altx</span></code> in your research, please cite:</p>
+<div class="line-block">
+<div class="line">[1] M. T. Kurbucz, B. Hajós, B. P. Halmos, V. Á. Molnár, A. Jakovác,</div>
+<div class="line-block">
+<div class="line"><em>Adaptive law-based feature representation for time series classification</em>,</div>
+<div class="line">Scientific Reports <strong>15</strong> (1), 41775, 2025.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1038/s41598-025-25667-0">https://doi.org/10.1038/s41598-025-25667-0</a></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">[2] B. P. Halmos, B. Hajós, V. Á. Molnár, M. T. Kurbucz, A. Jakovác,</div>
+<div class="line-block">
+<div class="line"><em>altx: a Python package for adaptive law-based transformation in time series classification</em>,</div>
+<div class="line">Machine Learning: Science and Technology <strong>7</strong> (1), 015034, 2026.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1088/2632-2153/ae3e4f">https://doi.org/10.1088/2632-2153/ae3e4f</a></div>
+</div>
+</div>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">kurbucz2025adaptive</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Adaptive law-based feature representation for time series classification}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{Kurbucz, Marcell T and Haj{\&#39;o}s, Bal{\&#39;a}zs and Halmos, Bal{\&#39;a}zs P</span>
+<span class="s">             and Moln{\&#39;a}r, Vince {\&#39;A} and Jakov{\&#39;a}c, Antal}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">journal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Scientific Reports}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">volume</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{15}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">number</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{1}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">pages</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{41775}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{2025}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">doi</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{10.1038/s41598-025-25667-0}</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nc">@article</span><span class="p">{</span><span class="nl">halmos2026altx</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{altx: a python package for adaptive law-based transformation</span>
+<span class="s">             in time series classification}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{Halmos, Bal{\&#39;a}zs P and Haj{\&#39;o}s, Bal{\&#39;a}zs and Moln{\&#39;a}r, Vince {\&#39;A}</span>
+<span class="s">             and Kurbucz, Marcell T and Jakov{\&#39;a}c, Antal}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">journal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Machine Learning: Science and Technology}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">volume</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{7}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">number</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{1}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">pages</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{015034}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">doi</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{10.1088/2632-2153/ae3e4f}</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">altx</span></code> is released under the <strong>GPLv3</strong> license.</p>
+</section>
 </section>
 
 
@@ -404,6 +470,21 @@ documentation for details.</p>
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
