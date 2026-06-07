@@ -4,7 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "altx"
-version = "1.0.0"
 description = "Adaptive Law-Based Transformation (ALT) for time series classification."
 authors = [
     { name = "Marcell Tamás Kurbucz", email = "m.kurbucz@ucl.ac.uk" }
