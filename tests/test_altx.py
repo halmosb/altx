@@ -715,6 +715,82 @@ class TestSaveFeatures:
 # ---------------------------------------------------------------------------
 
 
+# ---------------------------------------------------------------------------
+# multiply_only
+# ---------------------------------------------------------------------------
+
+
+class TestMultiplyOnly:
+    """Tests for Altx.multiply_only."""
+
+    def test_output_shape(self, trained_model: Altx) -> None:
+        """Output shape is (nol_tilde, n_laws, m)."""
+        torch.manual_seed(20)
+        z = torch.randn(20)
+        rlk = trained_model.RLK[0]
+        r, l, k = rlk
+        step = (r - 1) // (2 * l - 2)
+        nol_tilde = (z.shape[0] - step * (l - 1) - 1) // k + 1
+        n_laws = trained_model.Ps[rlk][1].shape[1]
+        result = trained_model.multiply_only(z, rlk)
+        assert result.shape == (nol_tilde, n_laws, trained_model.m)
+
+    def test_output_dtype_is_float32(self, trained_model: Altx) -> None:
+        """Output tensor always has float32 dtype."""
+        z = torch.randn(20, dtype=torch.float64)
+        result = trained_model.multiply_only(z, trained_model.RLK[0])
+        assert result.dtype == torch.float32
+
+    def test_numpy_input_accepted(self, trained_model: Altx) -> None:
+        """NumPy array input is converted and produces a torch.Tensor output."""
+        np.random.seed(21)
+        z = np.random.randn(20).astype(np.float32)
+        result = trained_model.multiply_only(z, trained_model.RLK[0])
+        assert isinstance(result, torch.Tensor)
+
+    def test_numpy_and_tensor_inputs_agree(self, trained_model: Altx) -> None:
+        """NumPy and equivalent torch.Tensor inputs produce identical outputs."""
+        np.random.seed(22)
+        z_np = np.random.randn(20).astype(np.float32)
+        z_t = torch.tensor(z_np)
+        rlk = trained_model.RLK[0]
+        assert torch.allclose(
+            trained_model.multiply_only(z_np, rlk),
+            trained_model.multiply_only(z_t, rlk),
+        )
+
+    def test_1d_input_auto_unsqueezed(self, trained_model: Altx) -> None:
+        """1-D input is treated as a single-channel instance without error."""
+        z = torch.randn(20)
+        assert z.ndim == 1
+        result = trained_model.multiply_only(z, trained_model.RLK[0])
+        assert result.ndim == 3
+
+    def test_normalize_false_differs_from_true(self, trained_model: Altx) -> None:
+        """Disabling normalization produces a different result than the default."""
+        torch.manual_seed(23)
+        z = torch.randn(20)
+        rlk = trained_model.RLK[0]
+        result_norm = trained_model.multiply_only(z, rlk, normalize_data=True)
+        result_raw = trained_model.multiply_only(z, rlk, normalize_data=False)
+        assert not torch.allclose(result_norm, result_raw)
+
+    def test_deterministic_output(self, trained_model: Altx) -> None:
+        """Repeated calls with the same input return identical tensors."""
+        torch.manual_seed(24)
+        z = torch.randn(20)
+        rlk = trained_model.RLK[0]
+        assert torch.equal(
+            trained_model.multiply_only(z, rlk),
+            trained_model.multiply_only(z, rlk),
+        )
+
+
+# ---------------------------------------------------------------------------
+# print_number_of_laws
+# ---------------------------------------------------------------------------
+
+
 class TestPrintNumberOfLaws:
     """Tests for Altx.print_number_of_laws."""
 
