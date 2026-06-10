@@ -553,7 +553,7 @@ class Altx:
             A tensor of the results.
         """
         # Prepare the instance to transform
-        if type(z) is np.ndarray:
+        if isinstance(z, np.ndarray):
             z = torch.tensor(z)
         z = z.to(dtype=torch.float32, device=self.device)
         if z.dim() == 1:
