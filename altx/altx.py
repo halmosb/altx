@@ -154,9 +154,9 @@ class Altx:
         else:
             self.device = device
 
-        if type(train_set) is np.ndarray:
+        if isinstance(train_set, np.ndarray):
             train_set = torch.tensor(train_set)
-        if type(train_classes) is np.ndarray:
+        if isinstance(train_classes, np.ndarray):
             train_classes = torch.tensor(train_classes)
         if train_set.shape[0] != train_classes.shape[0]:
             raise ValueError(
@@ -651,7 +651,7 @@ class Altx:
                 extr_methods[i] = cast(ExtrMethod, extr_methods[i] + [None])
             elif len(extr_methods[i]) == 1:
                 extr_methods[i] = cast(ExtrMethod, extr_methods[i] + [0.05])
-        if type(z) is np.ndarray:
+        if isinstance(z, np.ndarray):
             z = torch.tensor(z)
         # Adding second dimension if it is single variate
         if len(z.shape) == 1:
@@ -756,9 +756,9 @@ class Altx:
 
         if test_length is None:
             test_length = torch.full((test_set.shape[0],), self.train_set.shape[2])
-        if type(test_set) is np.ndarray:
+        if isinstance(test_set, np.ndarray):
             test_set = torch.tensor(test_set, dtype=torch.float32)
-        if type(test_classes) is np.ndarray:
+        if isinstance(test_classes, np.ndarray):
             test_classes = torch.tensor(test_classes)
         # Calculating features
         if len(test_set.shape) == 2:
