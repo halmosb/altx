@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>altx.altx &#8212; altx 1.0.0.post1.dev38+g9e31e9729 documentation</title>
+    <title>altx.altx &#8212; altx 1.0.0.post1.dev44+g6f6f7fce7 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
 
-    <script src="../_static/documentation_options.js?v=72dcb523"></script>
+    <script src="../_static/documentation_options.js?v=bd01a9ff"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <link rel="prev" title="altx package" href="altx.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.0.post1.dev38+g9e31e9729" />
+  <meta name="docsearch:version" content="1.0.0.post1.dev44+g6f6f7fce7" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -120,7 +120,7 @@
   
   
   
-    <p class="title logo__title">altx 1.0.0.post1.dev38+g9e31e9729 documentation</p>
+    <p class="title logo__title">altx 1.0.0.post1.dev44+g6f6f7fce7 documentation</p>
   
 </a></div>
     
@@ -650,6 +650,27 @@ training is not possible after loading.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="altx.altx.Altx.multiply_only">
+<span class="sig-name descname"><span class="pre">multiply_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rlk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/altx/altx.html#Altx.multiply_only"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#altx.altx.Altx.multiply_only" title="Link to this definition">#</a></dt>
+<dd><p>Multiplies an instance with the generated laws.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span>) – An instance of time series.</p></li>
+<li><p><strong>rlk</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – The (r, l, k) triplet.</p></li>
+<li><p><strong>normalize_data</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Normalize the embedded time series to unit length for each time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tensor of the results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="id1">
 <span class="sig-name descname"><span class="pre">print_number_of_laws</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/altx/altx.html#Altx.print_number_of_laws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
 <dd><p>Print the number of laws for each class and (r, l, k) triplet.</p>
@@ -914,6 +935,7 @@ saving.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#altx.altx.Altx.plot_anomalies"><code class="docutils literal notranslate"><span class="pre">Altx.plot_anomalies()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#altx.altx.Altx.print_number_of_laws"><code class="docutils literal notranslate"><span class="pre">Altx.print_number_of_laws()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Altx.load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#altx.altx.Altx.multiply_only"><code class="docutils literal notranslate"><span class="pre">Altx.multiply_only()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Altx.print_number_of_laws()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Altx.save()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Altx.train()</span></code></a></li>
