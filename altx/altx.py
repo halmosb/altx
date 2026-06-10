@@ -529,6 +529,48 @@ class Altx:
         )
         return torch.einsum("kij, ilj -> klj", data, self.Ps[rlk][1])
 
+    def multiply_only(
+        self,
+        z: torch.Tensor | np.ndarray,
+        rlk: tuple[int, int, int],
+        normalize_data: bool = True,
+    ) -> torch.Tensor:
+        """
+        Multiplies an instance with the generated laws.
+
+        Parameters
+        ----------
+        z : torch.Tensor
+            An instance of time series.
+        rlk : tuple
+            The (r, l, k) triplet.
+        normalize_data : bool
+            Normalize the embedded time series to unit length for each time step.
+
+        Returns
+        -------
+        torch.Tensor
+            A tensor of the results.
+        """
+        # Prepare the instance to transform
+        if type(z) is np.ndarray:
+            z = torch.tensor(z)
+        z = z.to(dtype=torch.float32, device=self.device)
+        if z.dim() == 1:
+            z = z.unsqueeze(0)
+        r, l, k = rlk
+        # Step between datapoints used in the embedding
+        step = (r - 1) // (2 * l - 2)
+        # The length of the embedding of z along the first dimension
+        nol_tilde = (z.shape[1] - step * (l - 1) - 1) // k + 1
+        data = torch.stack(
+            [z[:, i * k : i * k + step * l : step].T for i in range(nol_tilde)]
+        )
+        if normalize_data:
+            norma = torch.norm(data, dim=1).unsqueeze(1)
+            data = data / norma
+        return torch.einsum("kij, ilj -> klj", data, self.Ps[rlk][1])
+
     def _extract_features(
         self,
         M: torch.Tensor,
